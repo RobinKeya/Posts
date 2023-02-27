@@ -1,14 +1,10 @@
 package com.example.posts.presentations.userDetails
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -17,20 +13,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.posts.DummyContent
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun UserDetails(
-    viewModel: UserDetailsViewModel
+fun UserDetailsScreen(
+    viewModel: UserDetailsViewModel,
+    onItemClick: (id: Int)->Unit
 ) {
     Box(
         contentAlignment = Alignment.Center, 
         modifier = Modifier.fillMaxSize()) {
 
-        val list = listOf<UserDetailsContent>()
+        val list = DummyContent.getUserDetails()
+
+        Text(text = "User ${viewModel.state.value?.id}")
 
         LazyVerticalGrid(cells = GridCells.Fixed(2)
             , content ={
@@ -40,6 +39,7 @@ fun UserDetails(
                         modifier = Modifier
                             .clip(RoundedCornerShape(50))
                             .size(60.dp)
+                            .clickable { onItemClick(index) }
                     ) {
                         Column() {
                             Icon(painter = painterResource(id = list[index].icon)
@@ -50,6 +50,8 @@ fun UserDetails(
                         }
                     }
                 }
-            } )
+            },
+            contentPadding = PaddingValues(start = 8.dp)
+        )
     }
 }

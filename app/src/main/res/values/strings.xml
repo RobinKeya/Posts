@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Posts</string>
+    <style name="user">User %d</style>
 </resources>
