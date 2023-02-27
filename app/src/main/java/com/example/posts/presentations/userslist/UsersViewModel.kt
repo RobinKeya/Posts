@@ -15,6 +15,7 @@ class UsersViewModel @Inject constructor(
     private val repository: PostsRepository,
     @IODispatcher private  val dispatcher : CoroutineDispatcher
 ): ViewModel() {
+    private val count = 0
     private val _state = mutableStateOf(
         UsersScreenState(
             users = emptyList(),
