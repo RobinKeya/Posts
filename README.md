@@ -10,6 +10,36 @@ The application is a work in progress and therefore bugs and unimplemented featu
 
 Contributions and bug reports are welcome. 
 
+## Features of the app
+
+(*Checked feauture indicates that the feature has been implemented while unchecked feaute indicates the feature has not yet been worked on.*)
+
+- [x] Posts Screen --> Screen showing a list of posts from all users.
+
+- [x] Post Details screen --> Screen showing details of individual posts.
+
+- [x] Users screen --> Screen showing list of all users 
+
+- [x] User Details screen -> Screen showing user information,  access to User's posts, albums, todos and photos. 
+
+- [ ] User's todos --> Screen displaying a user's todo list. 
+
+- [ ] User's Photos --> Screen dispalaying user's photos.
+
+- [ ] Post's comments --> Show comments to a particular posts. 
+
+- [ ] Add posts --> Make it possible to add posts to the list of posts. 
+
+- [ ] Delete post --> Ability to delete a post.
+
+- [ ] Update posts --> Ability to edit post's information. 
+
+- [ ] Authentication --> Sign up and Login of app's users. 
+
+- [ ] Profile screen --> Profile screen for an authenticated user. 
+
+- [ ] Settings Screen --> Ability for a user to do prefered customizations. 
+
 ### Technologies Used
 
 [Retrofit](https://square.github.io/retrofit/)  Type-safe HTTP client for android and Java.
