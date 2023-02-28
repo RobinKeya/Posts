@@ -1,5 +1,6 @@
 package com.example.posts.presentations.postsList
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,12 +17,12 @@ import com.example.posts.data.remote.Post
 import com.example.posts.presentations.Description
 
 @Composable
-fun PostsScreen(postsScreenState: PostsScreenState) {
+fun PostsScreen(postsScreenState: PostsScreenState, onCardClick: (id: Int) -> Unit) {
     Box(contentAlignment = Alignment.Center,
         modifier = Modifier.fillMaxSize()){
         LazyColumn(contentPadding = PaddingValues(8.dp)){
             items(postsScreenState.posts){
-                PostsItem(post = it)
+                PostsItem(post = it, onCardClick = {id-> onCardClick(id)})
             }
         }
         if(postsScreenState.isLoading){
@@ -38,11 +39,12 @@ fun PostsScreen(postsScreenState: PostsScreenState) {
 }
 
 @Composable
-fun PostsItem(post:Post) {
+fun PostsItem(post:Post, onCardClick: (id: Int)-> Unit) {
     Card(elevation = 4.dp,
     modifier = Modifier
         .fillMaxWidth()
-        .padding(8.dp)) {
+        .padding(8.dp)
+        .clickable { onCardClick(post.id) }) {
         Row(verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween) {
             Column {

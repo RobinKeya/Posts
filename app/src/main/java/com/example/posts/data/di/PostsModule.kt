@@ -23,5 +23,4 @@ object PostsModule {
     fun providePostInterfaceApi(retrofit: Retrofit): PostsInterface{
         return retrofit.create(PostsInterface::class.java)
     }
-
 }

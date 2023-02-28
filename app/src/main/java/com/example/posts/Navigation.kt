@@ -36,7 +36,9 @@ fun Navigation(navController: NavHostController) {
     NavHost(navController = navController, startDestination ="home" ){
         composable(route = "home"){
             val vm : PostsViewModel = viewModel()
-            PostsScreen(postsScreenState = vm.state.value)
+            PostsScreen(postsScreenState = vm.state.value){id->
+                navController.navigate("home/${id}")
+            }
         }
         composable(route = "home/{post_id}",
         arguments = listOf(navArgument("post_id"){

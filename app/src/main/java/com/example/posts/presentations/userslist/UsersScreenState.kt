@@ -1,3 +1,9 @@
 package com.example.posts.presentations.userslist
 
-data class UsersScreenState()
+import com.example.posts.data.remote.User
+
+data class UsersScreenState(
+    val users : List<User>,
+    val isLoading : Boolean,
+    val error : String? = null
+    )

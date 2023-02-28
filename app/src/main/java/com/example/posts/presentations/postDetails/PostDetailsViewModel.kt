@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class PostDetailsViewModel @Inject constructor(
-    private val stateHandle: SavedStateHandle,
+    stateHandle: SavedStateHandle,
     @IODispatcher private val dispatcher: CoroutineDispatcher,
     private  val repository: PostsRepository
 ): ViewModel() {

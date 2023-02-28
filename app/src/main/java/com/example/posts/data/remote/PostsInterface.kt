@@ -8,4 +8,7 @@ interface PostsInterface {
     suspend fun getPosts(): List<Post>
     @GET("/posts/{id}")
     suspend fun getPost(@Query("id")id: Int): Post
+
+    @GET("/users")
+    suspend fun getUsers(): List<User>
 }

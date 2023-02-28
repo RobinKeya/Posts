@@ -1,8 +1,5 @@
 package com.example.posts.presentations.userslist
 
-<<<<<<< HEAD
-class UsersViewModel {
-=======
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -47,5 +44,4 @@ class UsersViewModel @Inject constructor(
     suspend fun getUsers(): List<User>{
         return repository.getUsers()
     }
->>>>>>> nw
 }
