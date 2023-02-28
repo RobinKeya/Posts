@@ -1,3 +1,9 @@
 package com.example.posts.presentations.userDetails
 
-data class UserDetailsContent()
+import androidx.annotation.DrawableRes
+
+data class UserDetailsContent(
+    val id: Int,
+    val title: String,
+    @DrawableRes val icon: Int
+)

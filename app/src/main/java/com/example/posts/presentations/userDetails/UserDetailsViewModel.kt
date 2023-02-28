@@ -1,4 +1,6 @@
 package com.example.posts.presentations.userDetails
 
-class UserDetailsViewModel {
+import androidx.lifecycle.ViewModel
+
+class UserDetailsViewModel : ViewModel() {
 }

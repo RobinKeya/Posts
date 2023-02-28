@@ -28,7 +28,10 @@ import com.example.posts.presentations.postDetails.PostDetails
 import com.example.posts.presentations.postDetails.PostDetailsViewModel
 import com.example.posts.presentations.postsList.PostsScreen
 import com.example.posts.presentations.postsList.PostsViewModel
+import com.example.posts.presentations.userDetails.UserDetails
+import com.example.posts.presentations.userDetails.UserDetailsViewModel
 import com.example.posts.presentations.userslist.UserSreen
+import com.example.posts.presentations.userslist.UsersViewModel
 
 
 @Composable
@@ -50,7 +53,18 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = "users"){
-            UserSreen()
+            val vm: UsersViewModel = viewModel()
+            UserSreen(vm.state.value){id ->
+                navController.navigate("users/${id}")
+            }
+        }
+        composable(route= "users/{user_id}",
+        arguments = listOf(navArgument("user_id"){
+            type = NavType.IntType
+        })
+        ){
+            val vm : UserDetailsViewModel = viewModel()
+            UserDetails(viewModel = vm)
         }
         composable(route= "profile"){
             ProfileScreen()
