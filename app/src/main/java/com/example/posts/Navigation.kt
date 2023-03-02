@@ -30,7 +30,9 @@ import com.example.posts.presentations.postsList.PostsScreen
 import com.example.posts.presentations.postsList.PostsViewModel
 import com.example.posts.presentations.userDetails.UserDetails
 import com.example.posts.presentations.userDetails.UserDetailsViewModel
+import com.example.posts.presentations.userDetails.userTodo.UserTodoScreen
 import com.example.posts.presentations.userslist.UserSreen
+import com.example.posts.presentations.userslist.UsersScreenState
 import com.example.posts.presentations.userslist.UsersViewModel
 
 
@@ -54,7 +56,7 @@ fun Navigation(navController: NavHostController) {
 
         composable(route = "users"){
             val vm: UsersViewModel = viewModel()
-            UserSreen(vm.state.value){id ->
+            UserSreen(usersScreenState = vm.state.value){ id ->
                 navController.navigate("users/${id}")
             }
         }
@@ -64,8 +66,30 @@ fun Navigation(navController: NavHostController) {
         })
         ){
             val vm : UserDetailsViewModel = viewModel()
-            UserDetails(viewModel = vm)
+            UserDetails(viewModel = vm){index->
+                when(index){
+                    0-> navController.navigate("information")
+                    1-> navController.navigate("posts")
+                    2->navController.navigate("albums")
+                    3-> navController.navigate("todos")
+                }
+            }
         }
+
+        composable(route = "information"){
+
+        }
+        composable(route = "posts"){
+
+        }
+        composable(route = "albums"){
+
+        }
+        composable(route = "todos"){
+            val vm: UserDetailsViewModel = viewModel()
+            UserTodoScreen(todoScreenState =vm.todoState.value )
+        }
+
         composable(route= "profile"){
             ProfileScreen()
         }

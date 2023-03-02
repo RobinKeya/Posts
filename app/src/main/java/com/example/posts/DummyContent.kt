@@ -21,9 +21,14 @@ object DummyContent {
             Post("Body seven",1,"title seven",7),
         )
     }
+    //Todo
+    //change the drawables to correspond to titles.
     fun getUserContent(): List<UserDetailsContent>{
         return  listOf(
-            UserDetailsContent()
+            UserDetailsContent(0, "Information", R.drawable.ic_baseline_home_24),
+            UserDetailsContent(1, "Posts", R.drawable.ic_baseline_home_24),
+            UserDetailsContent(2, "Todos", R.drawable.ic_baseline_home_24),
+            UserDetailsContent(3, "Albums", R.drawable.ic_baseline_home_24)
         )
     }
     fun getBottomNavContent(): List<BottomMenuItem>{

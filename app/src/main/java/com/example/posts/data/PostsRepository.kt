@@ -3,6 +3,7 @@ package com.example.posts.data
 import com.example.posts.data.di.IODispatcher
 import com.example.posts.data.remote.Post
 import com.example.posts.data.remote.PostsInterface
+import com.example.posts.data.remote.Todo
 import com.example.posts.data.remote.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -27,4 +28,16 @@ class PostsRepository @Inject constructor(
             return@withContext postsInterface.getUsers()
         }
     }
+    suspend fun getUser(id: Int): User{
+        return withContext(dispatcher){
+            return@withContext postsInterface.getUser(id)
+        }
+    }
+
+    suspend fun getTodos(userId: Int): List<Todo>{
+        return withContext(dispatcher){
+            return@withContext postsInterface.getTodos(userId)
+        }
+    }
+
 }
