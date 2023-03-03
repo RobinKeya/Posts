@@ -19,7 +19,6 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.posts.presentations.BottomMenuItem
 import com.example.posts.presentations.ProfileScreen
@@ -30,9 +29,9 @@ import com.example.posts.presentations.postsList.PostsScreen
 import com.example.posts.presentations.postsList.PostsViewModel
 import com.example.posts.presentations.userDetails.UserDetails
 import com.example.posts.presentations.userDetails.UserDetailsViewModel
+import com.example.posts.presentations.userDetails.UserInfoScreen
 import com.example.posts.presentations.userDetails.userTodo.UserTodoScreen
 import com.example.posts.presentations.userslist.UserSreen
-import com.example.posts.presentations.userslist.UsersScreenState
 import com.example.posts.presentations.userslist.UsersViewModel
 
 
@@ -77,7 +76,8 @@ fun Navigation(navController: NavHostController) {
         }
 
         composable(route = "information"){
-
+            val vm : UserDetailsViewModel = viewModel()
+            UserInfoScreen(userDetailsViewModel = vm)
         }
         composable(route = "posts"){
 
