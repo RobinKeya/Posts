@@ -7,8 +7,10 @@ import androidx.lifecycle.viewModelScope
 import com.example.posts.data.PostsRepository
 import com.example.posts.data.di.IODispatcher
 import com.example.posts.data.di.MainDispatcher
+import com.example.posts.data.remote.Post
 import com.example.posts.data.remote.Todo
 import com.example.posts.data.remote.User
+import com.example.posts.presentations.postsList.PostsScreenState
 import com.example.posts.presentations.userDetails.userTodo.TodoScreenState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -31,14 +33,28 @@ class UserDetailsViewModel @Inject constructor(
     )
     val todoState get() = _todoState
 
+    private val _userPosts = mutableStateOf(
+        PostsScreenState(
+            posts = emptyList(),
+            isLoading = true
+        )
+    )
+    val userPosts get() = _userPosts
+
+
     init {
         val id = stateHandle.get<Int?>("user_id")?:0
         viewModelScope.launch(dispater) {
             val user =getUser(id)
             val todos = getTodos(id)
+            val posts = getPosts(id)
             _state.value = user
             _todoState.value = _todoState.value.copy(
                 todos = todos,
+                isLoading = false
+            )
+            _userPosts.value = _userPosts.value.copy(
+                posts = posts,
                 isLoading = false
             )
         }
@@ -51,5 +67,9 @@ class UserDetailsViewModel @Inject constructor(
     //seek clarification
     private suspend fun getTodos(userId: Int): List<Todo>{
         return repository.getTodos(userId)
+    }
+
+   private suspend fun getPosts(userId: Int): List<Post>{
+        return repository.getPosts(userId)
     }
 }

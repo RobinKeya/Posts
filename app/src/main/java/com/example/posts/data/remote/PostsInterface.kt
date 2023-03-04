@@ -23,4 +23,7 @@ interface PostsInterface {
 
     @GET("/albums/{id}/photos")
     suspend fun getPhotos(id:Int): List<Photo>
+
+    @GET("/users/{id}/posts")
+    suspend fun getPosts(id: Int): List<Post>
 }

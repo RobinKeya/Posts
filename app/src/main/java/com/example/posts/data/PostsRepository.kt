@@ -40,4 +40,10 @@ class PostsRepository @Inject constructor(
         }
     }
 
+    suspend fun getPosts(userId: Int): List<Post>{
+        return withContext(dispatcher){
+            return@withContext postsInterface.getPosts(userId)
+        }
+    }
+
 }
