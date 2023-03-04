@@ -7,10 +7,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.posts.data.PostsRepository
 import com.example.posts.data.di.IODispatcher
 import com.example.posts.data.di.MainDispatcher
+import com.example.posts.data.remote.Album
 import com.example.posts.data.remote.Post
 import com.example.posts.data.remote.Todo
 import com.example.posts.data.remote.User
 import com.example.posts.presentations.postsList.PostsScreenState
+import com.example.posts.presentations.userDetails.userAlbum.AlbumScreenState
 import com.example.posts.presentations.userDetails.userTodo.TodoScreenState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -41,6 +43,13 @@ class UserDetailsViewModel @Inject constructor(
     )
     val userPosts get() = _userPosts
 
+    private val _userAlbums = mutableStateOf(
+        AlbumScreenState(
+            albums = emptyList(),
+            isLoading = true
+        )
+    )
+    val userAlbums get() = _userAlbums
 
     init {
         val id = stateHandle.get<Int?>("user_id")?:0
@@ -48,6 +57,7 @@ class UserDetailsViewModel @Inject constructor(
             val user =getUser(id)
             val todos = getTodos(id)
             val posts = getPosts(id)
+            val albums = getAlbums(id)
             _state.value = user
             _todoState.value = _todoState.value.copy(
                 todos = todos,
@@ -55,6 +65,10 @@ class UserDetailsViewModel @Inject constructor(
             )
             _userPosts.value = _userPosts.value.copy(
                 posts = posts,
+                isLoading = false
+            )
+            _userAlbums.value = _userAlbums.value.copy(
+                albums = albums,
                 isLoading = false
             )
         }
@@ -71,5 +85,9 @@ class UserDetailsViewModel @Inject constructor(
 
    private suspend fun getPosts(userId: Int): List<Post>{
         return repository.getPosts(userId)
+    }
+
+    private suspend fun getAlbums(userId: Int): List<Album>{
+        return repository.getAlbums(userId)
     }
 }

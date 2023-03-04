@@ -27,6 +27,7 @@ import com.example.posts.presentations.postsList.PostsViewModel
 import com.example.posts.presentations.userDetails.UserDetails
 import com.example.posts.presentations.userDetails.UserDetailsViewModel
 import com.example.posts.presentations.userDetails.UserInfoScreen
+import com.example.posts.presentations.userDetails.userAlbum.AlbumScreen
 import com.example.posts.presentations.userDetails.userTodo.UserTodoScreen
 import com.example.posts.presentations.userslist.UserSreen
 import com.example.posts.presentations.userslist.UsersViewModel
@@ -92,7 +93,10 @@ fun Navigation(navController: NavHostController) {
                 } )
         }
         composable(route = "albums"){
-
+            val vm : UserDetailsViewModel = viewModel()
+            AlbumScreen(albumScreenState = vm.userAlbums.value, onCardClick ={id->
+                navController.navigate("photos/${id}")
+            } )
         }
         composable(route = "todos"){
             val vm: UserDetailsViewModel = viewModel()

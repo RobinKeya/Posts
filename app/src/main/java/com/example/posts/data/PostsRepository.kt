@@ -1,10 +1,7 @@
 package com.example.posts.data
 
 import com.example.posts.data.di.IODispatcher
-import com.example.posts.data.remote.Post
-import com.example.posts.data.remote.PostsInterface
-import com.example.posts.data.remote.Todo
-import com.example.posts.data.remote.User
+import com.example.posts.data.remote.*
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
@@ -43,6 +40,12 @@ class PostsRepository @Inject constructor(
     suspend fun getPosts(userId: Int): List<Post>{
         return withContext(dispatcher){
             return@withContext postsInterface.getPosts(userId)
+        }
+    }
+
+    suspend fun getAlbums(userId: Int): List<Album>{
+        return withContext(dispatcher){
+            return@withContext postsInterface.getAlbums(userId)
         }
     }
 
