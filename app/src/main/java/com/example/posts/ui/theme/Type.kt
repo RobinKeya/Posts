@@ -1,6 +1,7 @@
 package com.example.posts.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -24,13 +25,15 @@ val Typography = Typography(
     ),
     h2 = TextStyle(
         fontFamily = Montserrat,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.W900,
         fontSize = 20.sp
     ),
     body1 = TextStyle(
         fontFamily = Montserrat,
-        fontSize = 14.sp,
-        fontWeight = FontWeight.Normal
+        color = Color.Black,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Normal,
+        lineHeight = 20.sp
     )
 
 )

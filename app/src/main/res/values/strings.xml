@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Posts</string>
     <string name="user">User %</string>
+    <string name="post_details">Post Detail</string>
+    <string name="post_by">Post by user %d</string>
+    <string name="users">Users</string>
 </resources>

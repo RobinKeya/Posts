@@ -5,15 +5,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.posts.data.PostsRepository
 import com.example.posts.data.di.IODispatcher
+import com.example.posts.data.di.MainDispatcher
 import com.example.posts.data.remote.User
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
+@HiltViewModel
 class UsersViewModel @Inject constructor(
     private val repository: PostsRepository,
-    @IODispatcher private  val dispatcher : CoroutineDispatcher
+    @MainDispatcher private  val dispatcher : CoroutineDispatcher
 ): ViewModel() {
     private val _state = mutableStateOf(
         UsersScreenState(
@@ -32,7 +34,7 @@ class UsersViewModel @Inject constructor(
     }
 
     init {
-        viewModelScope.launch(exception) {
+        viewModelScope.launch(exception + dispatcher) {
             val users = getUsers()
             _state.value = _state.value.copy(
                 users = users,

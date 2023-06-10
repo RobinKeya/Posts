@@ -1,5 +1,6 @@
 package com.example.posts.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors
@@ -16,12 +17,13 @@ private val DarkColorPalette = darkColors(
     onBackground = White
 )
 
+@SuppressLint("ConflictingOnColor")
 private val LightColorPalette = lightColors(
     primary = White,
     secondary = Green50,
     onPrimary = Black,
-    onSurface = Grey900,
-    onSecondary = Orange100,
+    surface = Green50,
+    onSurface = Black,
     background = White,
     onBackground = Black
 

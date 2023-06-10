@@ -6,7 +6,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import com.example.posts.presentations.Description
-import com.example.posts.presentations.postsList.PostsScreen
+import com.example.posts.presentations.postsList.composables.PostsScreen
 import com.example.posts.presentations.postsList.PostsScreenState
 import com.example.posts.ui.theme.PostsTheme
 import org.junit.Rule

@@ -1,8 +1,5 @@
-package com.example.posts.presentations.userDetails
+package com.example.posts.presentations.userDetails.userInfo
 
-import androidx.compose.animation.core.Spring
-import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.spring
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -12,20 +9,13 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.posts.presentations.userDetails.UserDetailsViewModel
 
 @Composable
 fun UserInfoScreen(userDetailsViewModel: UserDetailsViewModel) {
     val user = userDetailsViewModel.state.value
     var expanded by remember{ mutableStateOf(false) }
     var companyExpanded by remember{ mutableStateOf(false) }
-    val extraPadding by animateDpAsState(
-        if (expanded) 24.dp else 0.dp,
-        animationSpec = spring(
-            dampingRatio = Spring.DampingRatioMediumBouncy,
-            stiffness = Spring.StiffnessMedium
-        )
-    )
-
     if (user != null){
         Box(modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center) {

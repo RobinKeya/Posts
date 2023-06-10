@@ -5,11 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.posts.data.PostsRepository
 import com.example.posts.data.di.MainDispatcher
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class PostsViewModel @Inject constructor(
     private val postsRepository: PostsRepository,
     @MainDispatcher private val dispatcher: CoroutineDispatcher

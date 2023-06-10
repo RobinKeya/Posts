@@ -5,7 +5,9 @@ import com.example.posts.data.remote.*
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class PostsRepository @Inject constructor(
     private val postsInterface: PostsInterface,
     @IODispatcher private val dispatcher: CoroutineDispatcher

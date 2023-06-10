@@ -5,17 +5,17 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.posts.data.PostsRepository
-import com.example.posts.data.di.IODispatcher
+import com.example.posts.data.di.MainDispatcher
 import com.example.posts.data.remote.Post
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-
+@HiltViewModel
 class PostDetailsViewModel @Inject constructor(
     stateHandle: SavedStateHandle,
-    @IODispatcher private val dispatcher: CoroutineDispatcher,
+    @MainDispatcher private val dispatcher: CoroutineDispatcher,
     private  val repository: PostsRepository
 ): ViewModel() {
     private val _state = mutableStateOf<Post?>(null)
@@ -28,10 +28,9 @@ class PostDetailsViewModel @Inject constructor(
             _state.value = post
         }
     }
-    suspend fun getRestaurant(id: Int): Post{
-        return withContext(dispatcher){
-            val post = repository.getPost(id)
-            return@withContext post
+    private suspend fun getRestaurant(id: Int): Post{
+        return withContext(dispatcher) {
+            return@withContext repository.getPost(id)
         }
     }
 }

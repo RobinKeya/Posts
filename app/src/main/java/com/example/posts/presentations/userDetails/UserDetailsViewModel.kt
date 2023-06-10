@@ -14,10 +14,12 @@ import com.example.posts.data.remote.User
 import com.example.posts.presentations.postsList.PostsScreenState
 import com.example.posts.presentations.userDetails.userAlbum.AlbumScreenState
 import com.example.posts.presentations.userDetails.userTodo.TodoScreenState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
+@HiltViewModel
 class UserDetailsViewModel @Inject constructor(
     private val repository: PostsRepository,
     @MainDispatcher private val dispater: CoroutineDispatcher,
