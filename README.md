@@ -2,7 +2,15 @@
 
 ## Description
 
-This is an android application that consumes [json placeholder api](https://jsonplaceholder.typicode.com/) retrieve User's Posts, Comments associated to posts,Users present, albums, and Todos.
+PostsApp is an android application that consumes [json placeholder api](https://jsonplaceholder.typicode.com/) to get Posts, Comments associated to posts, User's list, albums,photos and Todos.
+
+MVVM presentation pattern has been used in the development of the application. 
+
+Jetpack libraries such as Jetpack Compose for UI developemnt and Hilt for dependency Injection has also been used to develop the application.
+
+Build system: Gradle.
+
+Min API level 24.
 
 ## Note
 
@@ -22,9 +30,9 @@ Contributions and bug reports are welcome.
 
 - [x] User Details screen -> Screen showing user information,  access to User's posts, albums, todos and photos. 
 
-- [x] User's todos --> Screen displaying a user's todo list. 
+- [ ] User's todos --> Screen displaying a user's todo list. 
 
-- [x] User's albums --> Screen displaying user's albums
+- [ ] User's albums --> Screen displaying user's albums
 
 - [ ] User's Photos --> Screen displaying user's photos.
 
@@ -62,7 +70,9 @@ The application requires an active internet connection to retrieve information f
 
 ## Screenshots
 
-(Coming soon ....)
+![alt text](https://github.com/RobinKeya/Posts/blob/master/Screenshots/Home...PNG "Home screen")
+![alt text](https://github.com/RobinKeya/Posts/blob/master/Screenshots/users.PNG "Users screen")
+![alt text](https://github.com/RobinKeya/Posts/blob/master/Screenshots/user_detail.PNG "User screen")
 
 
 
