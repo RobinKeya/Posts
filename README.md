@@ -10,7 +10,7 @@ Jetpack libraries such as Jetpack Compose for UI developemnt and Hilt for depend
 
 Build system: Gradle.
 
-Min API level 24.
+Min API level 21.
 
 ## Note
 
